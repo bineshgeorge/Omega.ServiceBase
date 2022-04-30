@@ -20,8 +20,8 @@ namespace Omega.ServiceBase
             _messgeList = new List<vMessageData>();
         }
 
-        public string NetworkID { get; set; }
-        public string UserName { get; set; }
+        public string? NetworkID { get; set; } = null;
+        public string? UserName { get; set; } = null;
         public vLanguageCode LanguageCode { get; set; } = vLanguageCode.English;
         public short CountryCode { get; set; }
 
@@ -63,8 +63,9 @@ namespace Omega.ServiceBase
             }
         }
 
-        public void ParseMessage(string message)
+        public void ParseMessage(string? message)
         {
+            if (message == null) return;
             var data = message.Split(';', StringSplitOptions.RemoveEmptyEntries);
             this.MessgeList.Add(new vMessageData()
             {
