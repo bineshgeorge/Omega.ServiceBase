@@ -10,11 +10,9 @@ namespace Omega.ServiceBase
     public abstract class OmegaBusinessBase<T, TF> : OmegaServiceBase
         where T : IDataModel, new()
         where TF : IModelFilter , new()
-    { 
-
+    {
         public OmegaBusinessBase(DataSession dataSession) : base(dataSession)
         {
-
         }
         
 

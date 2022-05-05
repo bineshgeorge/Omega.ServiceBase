@@ -13,7 +13,7 @@ namespace Omega.ServiceBase
         private readonly DataSession _dataSession;
         private List<vMessageData> _messgeList;
 
-
+        public vReturnCode ReturnStatus { get; set; } = vReturnCode.Failure;
         public OmegaServiceBase(DataSession dataSession)
         {
             _dataSession = dataSession;
@@ -105,6 +105,14 @@ namespace Omega.ServiceBase
             return retVal;
         }
 
+        public DateTime? RowToDateTime(object val)
+        {
+            DateTime retVal;
+            if (val is DBNull || val == DBNull.Value || val == null) return null;
+            DateTime.TryParse(val.ToString(), out retVal);
+            return retVal;
+        }
+
         public bool RowToBoolean(object val)
         {
             bool retVal = false;
@@ -117,7 +125,11 @@ namespace Omega.ServiceBase
             int result = 5100; // false
             if (val == null || val == DBNull.Value) return false;
             int.TryParse(val.ToString(), out result);
-            return (result == vConstant.C_RET_SUCCESS);
+
+            bool retVal = (result == vConstant.C_RET_SUCCESS);
+            this.ReturnStatus = (retVal ? vReturnCode.Success : vReturnCode.Failure);
+            return retVal;
+
         }
     }
 }
