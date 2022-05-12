@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Omega.DataManager" Version="1.0.0.1" />
+    <PackageReference Include="Omega.DataManager" Version="1.0.0.3" />
   </ItemGroup>
 
   <ItemGroup>
