@@ -29,7 +29,7 @@ namespace Omega.ServiceBase
             return await tcs.Task;
             //return await Task.Run(() => new List<T>());
         }
-        public async Task<T?> FetchOne(TF filter)
+        public virtual async Task<T?> FetchOne(TF filter)
         {
             var data = await Fetch(filter);
             if (data == null || data.Count <= 0 ) return default;

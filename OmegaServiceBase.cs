@@ -69,7 +69,7 @@ namespace Omega.ServiceBase
             var data = message.Split(';', StringSplitOptions.RemoveEmptyEntries);
             this.MessgeList.Add(new vMessageData()
             {
-                Code = Convert.ToInt16(data[0]),
+                Code = Convert.ToInt32(data[0]),
                 Message = data[1].ToString()
             }) ;
         }
